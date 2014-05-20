@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>344</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NumberLink</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>344</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionNuevo"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbrir"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_C_mo_funciona"/>
+    <addaction name="actionCreadores"/>
+   </widget>
+   <widget class="QMenu" name="menuColor">
+    <property name="title">
+     <string>Color</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSoluci_n">
+    <property name="title">
+     <string>Solución</string>
+    </property>
+    <addaction name="actionIngenuo"/>
+    <addaction name="actionBacktracking"/>
+    <addaction name="separator"/>
+    <addaction name="actionVoraz"/>
+    <addaction name="actionNuestra_soluci_n"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuColor"/>
+   <addaction name="menuAyuda"/>
+   <addaction name="menuSoluci_n"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNuevo"/>
+   <addaction name="actionAbrir"/>
+   <addaction name="action_C_mo_funciona"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNuevo">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="action_C_mo_funciona">
+   <property name="text">
+    <string>¿Cómo funciona?</string>
+   </property>
+  </action>
+  <action name="actionCreadores">
+   <property name="text">
+    <string>Creadores</string>
+   </property>
+  </action>
+  <action name="actionIngenuo">
+   <property name="text">
+    <string>Ingenuo</string>
+   </property>
+  </action>
+  <action name="actionBacktracking">
+   <property name="text">
+    <string>Backtracking</string>
+   </property>
+  </action>
+  <action name="actionVoraz">
+   <property name="text">
+    <string>Voraz</string>
+   </property>
+  </action>
+  <action name="actionNuestra_soluci_n">
+   <property name="text">
+    <string>Nuestra solución</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
