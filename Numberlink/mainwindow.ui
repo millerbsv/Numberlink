@@ -55,11 +55,12 @@
     <addaction name="separator"/>
     <addaction name="actionVoraz"/>
     <addaction name="actionNuestra_soluci_n"/>
+    <addaction name="actionVerificar"/>
    </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuSoluci_n"/>
    <addaction name="menuColor"/>
    <addaction name="menuAyuda"/>
-   <addaction name="menuSoluci_n"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -71,6 +72,7 @@
    <addaction name="actionNuevo"/>
    <addaction name="actionAbrir"/>
    <addaction name="action_C_mo_funciona"/>
+   <addaction name="actionVerificar"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNuevo">
@@ -116,6 +118,11 @@
   <action name="actionNuestra_soluci_n">
    <property name="text">
     <string>Nuestra solución</string>
+   </property>
+  </action>
+  <action name="actionVerificar">
+   <property name="text">
+    <string>Verificar</string>
    </property>
   </action>
  </widget>

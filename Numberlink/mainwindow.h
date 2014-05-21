@@ -25,6 +25,8 @@ private slots:
 
     void on_actionIngenuo_triggered();
 
+    void on_actionVerificar_triggered();
+
 private:
     Ui::MainWindow *ui;
     QVector < QVector <QPushButton*> > Casillas;
