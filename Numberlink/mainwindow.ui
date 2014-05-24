@@ -6,20 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>344</width>
-    <height>300</height>
+    <width>370</width>
+    <height>386</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>NumberLink</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>293</y>
+      <width>352</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>344</width>
+     <width>370</width>
      <height>21</height>
     </rect>
    </property>
@@ -71,7 +94,6 @@
    </attribute>
    <addaction name="actionNuevo"/>
    <addaction name="actionAbrir"/>
-   <addaction name="action_C_mo_funciona"/>
    <addaction name="actionVerificar"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>

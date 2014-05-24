@@ -101,11 +101,11 @@ bool NumberLink::Encontrar_Nodos_Iniciales()
 
 bool NumberLink::Verificar()
 {
-    QVector < QVector <int> > Validacion_Casillas;
+    QVector <QVector <QString> > Validacion_Casillas;
     for(int i=0 ; i < int(this->Casillas.size()) ; i++){
-        QVector <int> temp;
+        QVector <QString> temp;
         for (int j=0 ; j < int(this->Casillas.size()) ; j++){
-            temp.append(1);
+            temp.append(this->Casillas.at(i).at(j)->text());
         }
         Validacion_Casillas.append(temp);
     }
@@ -114,25 +114,25 @@ bool NumberLink::Verificar()
         Posicion temp;
         temp.Pos_x=this->Nodos_Iniciales.at(i).Inicio.Pos_x;
         temp.Pos_y=this->Nodos_Iniciales.at(i).Inicio.Pos_y;
-        while(this->Casillas.at(temp.Pos_x).at(temp.Pos_y)->text()==this->Nodos_Iniciales.at(i).Dato){
-            this->Casillas.at(temp.Pos_y).at(temp.Pos_x)->setText("0");
-            //Validacion_Casillas.at(temp.Pos_y).at(temp.Pos_x);
-            if((temp.Pos_x!=0)and(this->Casillas.at(temp.Pos_y).at(temp.Pos_x-1)->text()==this->Nodos_Iniciales.at(i).Dato)){
+        while(Validacion_Casillas[temp.Pos_y][temp.Pos_x]==this->Nodos_Iniciales.at(i).Dato){
+            Validacion_Casillas[temp.Pos_y][temp.Pos_x] ="";
+            //this->Casillas.at(temp.Pos_y).at(temp.Pos_x);
+            if((temp.Pos_x!=0)and(Validacion_Casillas[temp.Pos_y][temp.Pos_x-1]==this->Nodos_Iniciales.at(i).Dato)){
                 temp.Pos_y=temp.Pos_y;
                 temp.Pos_x=temp.Pos_x-1;
             }
             else{
-                if((temp.Pos_x!= int(this->Casillas.size())-1)and(this->Casillas.at(temp.Pos_y).at(temp.Pos_x+1)->text()==this->Nodos_Iniciales.at(i).Dato)){
+                if((temp.Pos_x!= int(Validacion_Casillas.size())-1)and(Validacion_Casillas[temp.Pos_y][temp.Pos_x+1]==this->Nodos_Iniciales.at(i).Dato)){
                     temp.Pos_y=temp.Pos_y;
                     temp.Pos_x=temp.Pos_x+1;
                 }
                 else{
-                    if((temp.Pos_y!=0)and(this->Casillas.at(temp.Pos_y-1).at(temp.Pos_x)->text()==this->Nodos_Iniciales.at(i).Dato)){
+                    if((temp.Pos_y!=0)and(Validacion_Casillas[temp.Pos_y-1][temp.Pos_x]==this->Nodos_Iniciales.at(i).Dato)){
                         temp.Pos_x=temp.Pos_x;
                         temp.Pos_y=temp.Pos_y-1;
                     }
                     else{
-                        if((temp.Pos_y!= int(this->Casillas.size())-1)and(this->Casillas.at(temp.Pos_y+1).at(temp.Pos_x)->text()==this->Nodos_Iniciales.at(i).Dato)){
+                        if((temp.Pos_y!= int(Validacion_Casillas.size())-1)and(Validacion_Casillas[temp.Pos_y+1][temp.Pos_x]==this->Nodos_Iniciales.at(i).Dato)){
                             temp.Pos_x=temp.Pos_x;
                             temp.Pos_y=temp.Pos_y+1;
                         }
@@ -150,9 +150,9 @@ bool NumberLink::Verificar()
         }
     }
     */
-    for(int i = 0 ; i < int(Validacion_Casillas.size()) ; i++){
-        for(int j = 0 ; j < int(Validacion_Casillas.size()) ; j++){
-            if (Validacion_Casillas.at(i).at(j) != 0){
+    for(int i = 0 ; i < int(this->Casillas.size()) ; i++){
+        for(int j = 0 ; j < int(this->Casillas.size()) ; j++){
+            if (Validacion_Casillas.at(i).at(j) != ""){
                 return false;
             }
         }

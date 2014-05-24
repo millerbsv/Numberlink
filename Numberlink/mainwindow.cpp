@@ -64,15 +64,23 @@ void MainWindow::on_actionVerificar_triggered()
 {
     NumberLink obj;
     obj.Asignar_Casillas(this->Casillas);
-    obj.Encontrar_Nodos_Iniciales();
-    bool algo = obj.Verificar();
-    if (algo){
-        printf("true");
+    if (obj.Encontrar_Nodos_Iniciales())
+    {
+        bool algo = obj.Verificar();
+        if (algo){
+            this->ui->label->setText("Solución correcta");
+        }    //printf("true");
+        else
+        {
+            this->ui->label->setText("Solución incorrecta");
+        }
     }
     else
     {
-        printf("false");
+        this->ui->label->setText("Solución incorrecta");
     }
+    this->ui->label->setGeometry(QRect(QPoint((30*int(this->Casillas.size())/2)-50,30*int(this->Casillas.size())),QSize(100,30)));
+    //this->ui->label->geometry().bottom();
 
 
 }

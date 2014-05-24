@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -37,6 +38,7 @@ public:
     QAction *actionNuestra_soluci_n;
     QAction *actionVerificar;
     QWidget *centralWidget;
+    QLabel *label;
     QMenuBar *menuBar;
     QMenu *menuArchivo;
     QMenu *menuAyuda;
@@ -49,7 +51,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(344, 300);
+        MainWindow->resize(370, 386);
+        MainWindow->setLayoutDirection(Qt::LeftToRight);
         actionNuevo = new QAction(MainWindow);
         actionNuevo->setObjectName(QStringLiteral("actionNuevo"));
         actionAbrir = new QAction(MainWindow);
@@ -72,10 +75,15 @@ public:
         actionVerificar->setObjectName(QStringLiteral("actionVerificar"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(9, 293, 352, 20));
+        label->setLayoutDirection(Qt::LeftToRight);
+        label->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 344, 21));
+        menuBar->setGeometry(QRect(0, 0, 370, 21));
         menuArchivo = new QMenu(menuBar);
         menuArchivo->setObjectName(QStringLiteral("menuArchivo"));
         menuAyuda = new QMenu(menuBar);
@@ -133,6 +141,7 @@ public:
         actionVoraz->setText(QApplication::translate("MainWindow", "Voraz", 0));
         actionNuestra_soluci_n->setText(QApplication::translate("MainWindow", "Nuestra soluci\303\263n", 0));
         actionVerificar->setText(QApplication::translate("MainWindow", "Verificar", 0));
+        label->setText(QApplication::translate("MainWindow", "dsdasd", 0));
         menuArchivo->setTitle(QApplication::translate("MainWindow", "Archivo", 0));
         menuAyuda->setTitle(QApplication::translate("MainWindow", "Ayuda", 0));
         menuColor->setTitle(QApplication::translate("MainWindow", "Color", 0));
