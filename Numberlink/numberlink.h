@@ -28,9 +28,11 @@ public:
     NumberLink();
     void Asignar_Casillas(QString Nombre_Archivo);
     QVector < QVector <QPushButton*> > Obtener_Casillas();
-    bool Encontrar_Nodos_Iniciales();
+    bool Encontrar_Nodos_Iniciales(int Tipo);
     bool Verificar();
+    bool Verificar(QVector <QVector <QString> > Validacion_Casillas);
     void Asignar_Casillas(QVector < QVector <QPushButton*> > Casillas);
+    int Ingenuo();
 
 
 };

@@ -120,7 +120,6 @@ public:
         menuSoluci_n->addAction(actionVerificar);
         mainToolBar->addAction(actionNuevo);
         mainToolBar->addAction(actionAbrir);
-        mainToolBar->addAction(action_C_mo_funciona);
         mainToolBar->addAction(actionVerificar);
 
         retranslateUi(MainWindow);
@@ -141,7 +140,7 @@ public:
         actionVoraz->setText(QApplication::translate("MainWindow", "Voraz", 0));
         actionNuestra_soluci_n->setText(QApplication::translate("MainWindow", "Nuestra soluci\303\263n", 0));
         actionVerificar->setText(QApplication::translate("MainWindow", "Verificar", 0));
-        label->setText(QApplication::translate("MainWindow", "dsdasd", 0));
+        label->setText(QString());
         menuArchivo->setTitle(QApplication::translate("MainWindow", "Archivo", 0));
         menuAyuda->setTitle(QApplication::translate("MainWindow", "Ayuda", 0));
         menuColor->setTitle(QApplication::translate("MainWindow", "Color", 0));
