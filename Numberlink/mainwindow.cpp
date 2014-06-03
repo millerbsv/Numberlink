@@ -12,31 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_actionNuevo_triggered()
-{
-    QString Nombre_Archivo = QFileDialog::getOpenFileName(this, "Seleccione el archivo entrada", QDir::currentPath(),"Texto (*.txt)");
-    if(!Nombre_Archivo.isEmpty())
-    {
-        NumberLink obj;
-        obj.Asignar_Casillas(Nombre_Archivo);
-        Casillas = obj.Obtener_Casillas();
-        for(int i=0; i<int(Casillas.size()); i++)
-        {
-            for(int j=0; j<int(Casillas.size()); j++)
-            {
-                Casillas[i][j]->setParent(ui->centralWidget);
-                Casillas[i][j]->show();
-            }
-        }
-        this->resize(QSize(30*int(Casillas.size()),70+(30*int(Casillas.size()))));
-
-    }
+    this->NombreArchivo = "";
 }
 
 void MainWindow::on_actionAbrir_triggered()
 {
+    this->ui->textEdit->clear();
     for(int i=0; i<int(Casillas.size()); i++)
     {
         for(int j=0; j<int(Casillas.size()); j++)
@@ -44,11 +25,11 @@ void MainWindow::on_actionAbrir_triggered()
             Casillas[i][j]->close();
         }
     }
-    QString Nombre_Archivo = QFileDialog::getOpenFileName(this, "Seleccione el archivo entrada", QDir::currentPath(),"Texto (*.txt)");
-    if(!Nombre_Archivo.isEmpty())
+    this->NombreArchivo = QFileDialog::getOpenFileName(this, "Seleccione el archivo entrada", QDir::currentPath(),"Texto (*.txt)");
+    if(!NombreArchivo.isEmpty())
     {
         NumberLink obj;
-        obj.Asignar_Casillas(Nombre_Archivo);
+        obj.AsignarCasillas(NombreArchivo);
         Casillas = obj.Obtener_Casillas();
         for(int i=0; i<int(Casillas.size()); i++)
         {
@@ -58,46 +39,114 @@ void MainWindow::on_actionAbrir_triggered()
                 Casillas[i][j]->show();
             }
         }
-        this->resize(QSize(30*int(Casillas.size()),130+(30*int(Casillas.size()))));
+        this->ui->textEdit->setGeometry(QRect(QPoint((30*int(this->Casillas.size())+30),10),QSize(200,300)));
+        this->resize(QSize(250+(30*int(this->Casillas.size())),380));
     }
 }
 
 void MainWindow::on_actionIngenuo_triggered()
 {
     NumberLink obj;
-    obj.Asignar_Casillas(this->Casillas);
-    if (obj.Encontrar_Nodos_Iniciales(1))
+    obj.AsignarCasillas(this->Casillas);
+    if (obj.EncontrarNodosIniciales(1))
     {
-        this->ui->label->setText("S.E: "+QString::number(obj.Ingenuo()));
-        this->ui->label->setGeometry(QRect(QPoint((30*int(this->Casillas.size())/2)-50,30*int(this->Casillas.size())),QSize(200,30)));
+        QVector <int> respuesta=obj.Ingenuo();        
+        this->ui->textEdit->setText("Soluciones encontrada: "+QString::number(respuesta[1])+"\nSoluciones generadas : "+QString::number(respuesta[0])+"\nProfundidad del arbol: "+QString::number(respuesta[2]));
+        Casillas = obj.Obtener_Casillas();
+        obj.ArchivoSalida();
     }
     else
     {
-        this->ui->label->setText("Solución incorrecta");
+        this->ui->textEdit->setText("Solución incorrecta");
     }
-    this->ui->label->setGeometry(QRect(QPoint((30*int(this->Casillas.size())/2)-50,30*int(this->Casillas.size())),QSize(100,30)));
-
 }
 
 void MainWindow::on_actionVerificar_triggered()
 {
     NumberLink obj;
-    obj.Asignar_Casillas(this->Casillas);
-    if (obj.Encontrar_Nodos_Iniciales(0))
+    obj.AsignarCasillas(this->Casillas);
+    if (obj.EncontrarNodosIniciales(0))
     {
         bool algo = obj.Verificar();
         if (algo){
-            this->ui->label->setText("Solución correcta");
-        }    //printf("true");
+            this->ui->textEdit->setText("Solución correcta");
+        }
         else
         {
-            this->ui->label->setText("Solución incorrecta");
+            this->ui->textEdit->setText("Solución incorrecta");
         }
     }
     else
     {
-        this->ui->label->setText("Solución incorrecta");
+        this->ui->textEdit->setText("Solución incorrecta");
     }
-    this->ui->label->setGeometry(QRect(QPoint((30*int(this->Casillas.size())/2)-50,30*int(this->Casillas.size())),QSize(100,30)));
+}
+
+void MainWindow::on_actionBacktracking_triggered()
+{
+    NumberLink obj;
+    obj.AsignarCasillas(this->Casillas);
+    if (obj.EncontrarNodosIniciales(1))
+    {
+        obj.Backtraking();
+        QString Desechadas = "";
+        QVector <int> nivelAlternativaDesechada = obj.getrespuestanivelAlternativaDesechada();
+        for(int i = 0 ; i < int(nivelAlternativaDesechada.size()) ; i ++ ){
+            if(i == 0){
+                Desechadas.append(QString::number(nivelAlternativaDesechada[i])+", ");
+            }
+            else{
+                Desechadas.append(QString::number(nivelAlternativaDesechada[i])+", ");
+            }
+        }
+        this->ui->textEdit->setText("Soluciones encontrada: "+QString::number(obj.getRespuestaCantContruidas())+"\nSoluciones desechadas : "+QString::number(obj.getRespuestaCantDesachada())+"\nProfundidad del arbol: "+QString::number(obj.getRespuestaProfundidad())+"\nMomento de desecho: "+Desechadas);
+        Casillas = obj.Obtener_Casillas();
+        obj.ArchivoSalida();
+    }
+    else
+    {
+        this->ui->textEdit->setText("Solución incorrecta");
+    }    
+}
+
+void MainWindow::on_actionSalir_triggered()
+{
+    close();
+}
+
+void MainWindow::on_actionCreadores_triggered()
+{
+    this->ui->textEdit->setText("Camilo Quintero\nDiego Lozada");
+}
+
+void MainWindow::on_action_C_mo_funciona_triggered()
+{
+    this->ui->textEdit->setText("Seleccione primero el archivo a leer (Abrir), luego seleccione el modo de solución a implementar, también puede verificar si el archivo abierto es una solució.\nSi se selecciona ingenuo, el programa realizara todas la soluciones posibles del tablero, y mostrar una de las soluciones encontradas además mostrara los resultados del algoritmo en este lugar.\nSi se selecciona backtracking, el programa realizara todas las soluciones posibles mediante backtracking teniendo en cuenta los candidatos por medio de comparaciones de sus vecinos y comprobación de los vecinos de sus vecinos (vecinos = arriba, abajo, izquierda, derecha).");
+}
+
+void MainWindow::on_actionVoraz_triggered()
+{
+    NumberLink obj;
+    obj.AsignarCasillas(this->Casillas);
+    if (obj.EncontrarNodosIniciales(1))
+    {
+        obj.Voraz();
+        this->ui->textEdit->setText("Soluciones encontrada: "+QString::number(obj.getRespuestaCantContruidas()));
+        Casillas = obj.Obtener_Casillas();
+        obj.ArchivoSalida();
+    }
+    else
+    {
+        this->ui->textEdit->setText("Solución incorrecta");
+    }
+}
+
+void MainWindow::on_actionColorear_triggered()
+{
+    NumberLink obj;
+    obj.AsignarCasillas(this->Casillas);
+    if (obj.EncontrarNodosIniciales(0)){
+        obj.Colorear();
+    }
 
 }

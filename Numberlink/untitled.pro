@@ -14,11 +14,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    numberlink.cpp \
-    ingenuo.cpp
+    numberlink.cpp
 
 HEADERS  += mainwindow.h \
-    numberlink.h \
-    ingenuo.h
+    numberlink.h
 
 FORMS    += mainwindow.ui

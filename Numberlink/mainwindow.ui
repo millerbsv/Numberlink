@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>370</width>
+    <width>592</width>
     <height>386</height>
    </rect>
   </property>
@@ -17,23 +17,14 @@
    <enum>Qt::LeftToRight</enum>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
+   <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>293</y>
-      <width>352</width>
-      <height>20</height>
+      <x>370</x>
+      <y>10</y>
+      <width>211</width>
+      <height>311</height>
      </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
     </property>
    </widget>
   </widget>
@@ -42,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>370</width>
+     <width>592</width>
      <height>21</height>
     </rect>
    </property>
@@ -50,7 +41,6 @@
     <property name="title">
      <string>Archivo</string>
     </property>
-    <addaction name="actionNuevo"/>
     <addaction name="separator"/>
     <addaction name="actionAbrir"/>
     <addaction name="separator"/>
@@ -64,11 +54,6 @@
     <addaction name="action_C_mo_funciona"/>
     <addaction name="actionCreadores"/>
    </widget>
-   <widget class="QMenu" name="menuColor">
-    <property name="title">
-     <string>Color</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuSoluci_n">
     <property name="title">
      <string>Solución</string>
@@ -77,12 +62,11 @@
     <addaction name="actionBacktracking"/>
     <addaction name="separator"/>
     <addaction name="actionVoraz"/>
-    <addaction name="actionNuestra_soluci_n"/>
     <addaction name="actionVerificar"/>
+    <addaction name="actionColorear"/>
    </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuSoluci_n"/>
-   <addaction name="menuColor"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -92,16 +76,14 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionNuevo"/>
    <addaction name="actionAbrir"/>
    <addaction name="actionVerificar"/>
+   <addaction name="actionIngenuo"/>
+   <addaction name="actionBacktracking"/>
+   <addaction name="actionVoraz"/>
+   <addaction name="actionColorear"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionNuevo">
-   <property name="text">
-    <string>Nuevo</string>
-   </property>
-  </action>
   <action name="actionAbrir">
    <property name="text">
     <string>Abrir</string>
@@ -137,14 +119,14 @@
     <string>Voraz</string>
    </property>
   </action>
-  <action name="actionNuestra_soluci_n">
-   <property name="text">
-    <string>Nuestra solución</string>
-   </property>
-  </action>
   <action name="actionVerificar">
    <property name="text">
     <string>Verificar</string>
+   </property>
+  </action>
+  <action name="actionColorear">
+   <property name="text">
+    <string>Colorear</string>
    </property>
   </action>
  </widget>

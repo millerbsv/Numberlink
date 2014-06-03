@@ -14,11 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -27,7 +27,6 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionNuevo;
     QAction *actionAbrir;
     QAction *actionSalir;
     QAction *action_C_mo_funciona;
@@ -35,14 +34,13 @@ public:
     QAction *actionIngenuo;
     QAction *actionBacktracking;
     QAction *actionVoraz;
-    QAction *actionNuestra_soluci_n;
     QAction *actionVerificar;
+    QAction *actionColorear;
     QWidget *centralWidget;
-    QLabel *label;
+    QTextEdit *textEdit;
     QMenuBar *menuBar;
     QMenu *menuArchivo;
     QMenu *menuAyuda;
-    QMenu *menuColor;
     QMenu *menuSoluci_n;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -51,10 +49,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(370, 386);
+        MainWindow->resize(592, 386);
         MainWindow->setLayoutDirection(Qt::LeftToRight);
-        actionNuevo = new QAction(MainWindow);
-        actionNuevo->setObjectName(QStringLiteral("actionNuevo"));
         actionAbrir = new QAction(MainWindow);
         actionAbrir->setObjectName(QStringLiteral("actionAbrir"));
         actionSalir = new QAction(MainWindow);
@@ -69,27 +65,23 @@ public:
         actionBacktracking->setObjectName(QStringLiteral("actionBacktracking"));
         actionVoraz = new QAction(MainWindow);
         actionVoraz->setObjectName(QStringLiteral("actionVoraz"));
-        actionNuestra_soluci_n = new QAction(MainWindow);
-        actionNuestra_soluci_n->setObjectName(QStringLiteral("actionNuestra_soluci_n"));
         actionVerificar = new QAction(MainWindow);
         actionVerificar->setObjectName(QStringLiteral("actionVerificar"));
+        actionColorear = new QAction(MainWindow);
+        actionColorear->setObjectName(QStringLiteral("actionColorear"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(9, 293, 352, 20));
-        label->setLayoutDirection(Qt::LeftToRight);
-        label->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
+        textEdit = new QTextEdit(centralWidget);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(370, 10, 211, 311));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 370, 21));
+        menuBar->setGeometry(QRect(0, 0, 592, 21));
         menuArchivo = new QMenu(menuBar);
         menuArchivo->setObjectName(QStringLiteral("menuArchivo"));
         menuAyuda = new QMenu(menuBar);
         menuAyuda->setObjectName(QStringLiteral("menuAyuda"));
-        menuColor = new QMenu(menuBar);
-        menuColor->setObjectName(QStringLiteral("menuColor"));
         menuSoluci_n = new QMenu(menuBar);
         menuSoluci_n->setObjectName(QStringLiteral("menuSoluci_n"));
         MainWindow->setMenuBar(menuBar);
@@ -102,9 +94,7 @@ public:
 
         menuBar->addAction(menuArchivo->menuAction());
         menuBar->addAction(menuSoluci_n->menuAction());
-        menuBar->addAction(menuColor->menuAction());
         menuBar->addAction(menuAyuda->menuAction());
-        menuArchivo->addAction(actionNuevo);
         menuArchivo->addSeparator();
         menuArchivo->addAction(actionAbrir);
         menuArchivo->addSeparator();
@@ -116,11 +106,14 @@ public:
         menuSoluci_n->addAction(actionBacktracking);
         menuSoluci_n->addSeparator();
         menuSoluci_n->addAction(actionVoraz);
-        menuSoluci_n->addAction(actionNuestra_soluci_n);
         menuSoluci_n->addAction(actionVerificar);
-        mainToolBar->addAction(actionNuevo);
+        menuSoluci_n->addAction(actionColorear);
         mainToolBar->addAction(actionAbrir);
         mainToolBar->addAction(actionVerificar);
+        mainToolBar->addAction(actionIngenuo);
+        mainToolBar->addAction(actionBacktracking);
+        mainToolBar->addAction(actionVoraz);
+        mainToolBar->addAction(actionColorear);
 
         retranslateUi(MainWindow);
 
@@ -130,7 +123,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "NumberLink", 0));
-        actionNuevo->setText(QApplication::translate("MainWindow", "Nuevo", 0));
         actionAbrir->setText(QApplication::translate("MainWindow", "Abrir", 0));
         actionSalir->setText(QApplication::translate("MainWindow", "Salir", 0));
         action_C_mo_funciona->setText(QApplication::translate("MainWindow", "\302\277C\303\263mo funciona?", 0));
@@ -138,12 +130,10 @@ public:
         actionIngenuo->setText(QApplication::translate("MainWindow", "Ingenuo", 0));
         actionBacktracking->setText(QApplication::translate("MainWindow", "Backtracking", 0));
         actionVoraz->setText(QApplication::translate("MainWindow", "Voraz", 0));
-        actionNuestra_soluci_n->setText(QApplication::translate("MainWindow", "Nuestra soluci\303\263n", 0));
         actionVerificar->setText(QApplication::translate("MainWindow", "Verificar", 0));
-        label->setText(QString());
+        actionColorear->setText(QApplication::translate("MainWindow", "Colorear", 0));
         menuArchivo->setTitle(QApplication::translate("MainWindow", "Archivo", 0));
         menuAyuda->setTitle(QApplication::translate("MainWindow", "Ayuda", 0));
-        menuColor->setTitle(QApplication::translate("MainWindow", "Color", 0));
         menuSoluci_n->setTitle(QApplication::translate("MainWindow", "Soluci\303\263n", 0));
     } // retranslateUi
 
