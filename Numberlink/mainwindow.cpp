@@ -99,7 +99,7 @@ void MainWindow::on_actionBacktracking_triggered()
                 Desechadas.append(QString::number(nivelAlternativaDesechada[i])+", ");
             }
         }
-        this->ui->textEdit->setText("Soluciones encontrada: "+QString::number(obj.getRespuestaCantContruidas())+"\nSoluciones desechadas : "+QString::number(obj.getRespuestaCantDesachada())+"\nProfundidad del arbol: "+QString::number(obj.getRespuestaProfundidad())+"\nMomento de desecho: "+Desechadas);
+        this->ui->textEdit->setText("Soluciones encontrada: "+QString::number(obj.getRespuestaCantContruidas())+"\nSoluciones desechadas : "+QString::number(obj.getRespuestaCantDesachada())+"\nMomento de desecho: "+Desechadas);
         Casillas = obj.Obtener_Casillas();
         obj.ArchivoSalida();
     }
